@@ -12,139 +12,151 @@ public class CoffeeMachine {
         int addCoffee = 0;
         int addCups = 0;
         int addMoney = 0;
-        int chooseDrink = 0;
+        String chooseDrink = "";
+        String exit = "exit";
         Scanner skaner = new Scanner(System.in);
-        
-        System.out.println("The coffee machine has:");
-        System.out.println(amountWater + " of water");
-        System.out.println(amountMilk + " of milk");
-        System.out.println(amountCoffee + " of coffee beans");
-        System.out.println(amountCups + " of disposable cups");
-        System.out.println(amountMoney + " of money");
-        System.out.println();
-        System.out.println( "Write action (buy, fill, take):");
-       
-        String chooseAction = skaner.nextLine();
-        
-       switch(chooseAction) {
-           case "buy":
-                
-                System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino: ");
-                
-                chooseDrink = skaner.nextInt();    
-                
-                switch(chooseDrink) {
-                    
-                    case 1:
-                    
-                        amountWater = amountWater - 250;
-                        amountCoffee = amountCoffee - 16;
-                        amountMoney = amountMoney + 4;      
-                        amountCups = amountCups - 1;
-                    
-                        System.out.println();
-                        System.out.println("The coffee machine has:");
-                        System.out.println(amountWater + " of water");
-                        System.out.println(amountMilk + " of milk");
-                        System.out.println(amountCoffee + " of coffee beans");
-                        System.out.println(amountCups + " of disposable cups");
-                        System.out.println(amountMoney + " of money");
-                        System.out.println();
-                        System.out.println( "Write action (buy, fill, take):");
-                        break;
-                    
-                    case 2:
-                    
-                        amountWater = amountWater - 350;
-                        amountMilk = amountMilk - 75;
-                        amountCoffee = amountCoffee - 20;
-                        amountMoney = amountMoney + 7;
-                        amountCups = amountCups - 1;
-                    
-                         System.out.println();
-                        System.out.println("The coffee machine has:");
-                        System.out.println(amountWater + " of water");
-                        System.out.println(amountMilk + " of milk");
-                        System.out.println(amountCoffee + " of coffee beans");
-                        System.out.println(amountCups + " of disposable cups");
-                        System.out.println(amountMoney + " of money");
-                        System.out.println();
-                        System.out.println( "Write action (buy, fill, take):");
-                        break;
+      
+
+     
+
+        String chooseAction = "";
+               while (chooseAction.equals(exit) == false){
+                        System.out.println("Write action (buy, fill, take, remaining, exit):");
+                chooseAction = skaner.nextLine();
+            switch(chooseAction) {
+                case "buy":
                         
-                    case 3:
-                        amountWater = amountWater - 200;
-                        amountMilk = amountMilk - 100;
-                        amountCoffee = amountCoffee - 12;
-                        amountMoney = amountMoney + 6;
-                        amountCups = amountCups - 1;
+                        System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main mainu: ");
                         
-                        System.out.println();
-                        System.out.println("The coffee machine has:");
-                        System.out.println(amountWater + " of water");
-                        System.out.println(amountMilk + " of milk");
-                        System.out.println(amountCoffee + " of coffee beans");
-                        System.out.println(amountCups + " of disposable cups");
-                        System.out.println(amountMoney + " of money");
-                        System.out.println();
-                        System.out.println( "Write action (buy, fill, take):");
+                        chooseDrink = skaner.nextLine();    
+                        
+                        switch(chooseDrink) {
+                            
+                            case "1":
+                            
+                            if (amountWater >= 250 && amountCoffee >= 16 & amountCups >= 1){
+                                amountWater = amountWater - 250;
+                                amountCoffee = amountCoffee - 16;
+                                amountMoney = amountMoney + 4;      
+                                amountCups = amountCups - 1;
+                          
+                                System.out.println("I have enough resources, making you a coffee!");
+                             
+                        
+                                break;
+                            } else if (amountWater < 250) {
+                            System.out.println("Sorry, not enough water!");
+                            break;
+                            } else if (amountCoffee < 16) {
+                              System.out.println("Sorry, not enough coffee!"); 
+                              break;
+                            } else
+                              System.out.println("Sorry, not enough cups!"); 
+                              break;
+                            
+                            
+                            case "2":
+                            if (amountWater >= 350 && amountMilk >= 75 && amountCoffee >= 20 & amountCups >= 1){
+                                
+                                amountWater = amountWater - 350;
+                                amountMilk = amountMilk - 75;
+                                amountCoffee = amountCoffee - 20;
+                                amountMoney = amountMoney + 7;
+                                amountCups = amountCups - 1;
+                                
+                                 System.out.println("I have enough resources, making you a coffee!");
+                            
+                            
+                            break;
+                            } else if (amountWater < 250) {
+                            System.out.println("Sorry, not enough water!");
+                            break;
+                            } else if (amountCoffee < 20) {
+                              System.out.println("Sorry, not enough coffee!"); 
+                              break;
+                            } else if(amountMilk < 75) {
+                              System.out.println("Sorry, not enough milk!"); 
+                              break;
+                            } else 
+                               System.out.println("Sorry, not enough cups!"); 
+                                
+                            case "3":
+                            if (amountWater >= 200 && amountMilk >= 100 && amountCoffee >= 12 & amountCups >= 1){
+                                
+                                amountWater = amountWater - 200;
+                                amountMilk = amountMilk - 100;
+                                amountCoffee = amountCoffee - 12;
+                                amountMoney = amountMoney + 6;
+                                amountCups = amountCups - 1;
+                                
+                                System.out.println("I have enough resources, making you a coffee!");
+                               
+                                 break;
+                            } else if (amountWater < 200) {
+                                    System.out.println("Sorry, not enough water!");
+                            break;
+                            } else if (amountCoffee < 12) {
+                                    System.out.println("Sorry, not enough coffee!"); 
+                            break;
+                            } else if(amountMilk < 100) {
+                                    System.out.println("Sorry, not enough milk!"); 
+                             break;
+                            } else 
+                                    System.out.println("Sorry, not enough cups!"); 
+                                    
+                            case "back":
+                            
+                            break;
+                        }
+                        
                         break;
-                    
-                }
                 
-                 break;
-           
-           case "fill":
+                case "fill":
+                        
+                        System.out.println("Write how many ml of water do you want to add:");
+                        
+                        addWater = skaner.nextInt();                
+                        amountWater = amountWater + addWater;
+                        
+                        System.out.println("Write how many ml of milk do you want to add:");
+                        
+                        addMilk = skaner.nextInt();                
+                        amountMilk = amountMilk + addMilk;
+                        
+                        System.out.println("Write how many grams of coffee beans do you want to add: ");
+                        
+                        addCoffee = skaner.nextInt();                
+                        amountCoffee = amountCoffee + addCoffee;
+                        
+                        System.out.println("Write how many disposable cups of coffee do you want to add:");
+                        
+                        addCups = skaner.nextInt();                
+                        amountCups = amountCups + addCups;
+                        
+                                          
+                        break;
                 
-                System.out.println("Write how many ml of water do you want to add:");
+                case "take":
                 
-                addWater = skaner.nextInt();                
-                amountWater = amountWater + addWater;
-                
-                System.out.println("Write how many ml of milk do you want to add:");
-                
-                addMilk = skaner.nextInt();                
-                amountMilk = amountMilk + addMilk;
-                
-                System.out.println("Write how many grams of coffee beans do you want to add: ");
-                
-                addCoffee = skaner.nextInt();                
-                amountCoffee = amountCoffee + addCoffee;
-                
-                System.out.println("Write how many disposable cups of coffee do you want to add:");
-                
-                addCups = skaner.nextInt();                
-                amountCups = amountCups + addCups;
-                
-                              
-                        System.out.println();
-                        System.out.println("The coffee machine has:");
-                        System.out.println(amountWater + " of water");
-                        System.out.println(amountMilk + " of milk");
-                        System.out.println(amountCoffee + " of coffee beans");
-                        System.out.println(amountCups + " of disposable cups");
-                        System.out.println(amountMoney + " of money");
-                        System.out.println();
-                        System.out.println( "Write action (buy, fill, take):");
-           
+                    System.out.println("I gave you " + amountMoney);
+                    amountMoney = 0;
+                                      
                 break;
-           
-           case "take":
-           
-             System.out.println("I gave you " + amountMoney);
-             amountMoney = 0;
-             System.out.println();
-                    System.out.println("The coffee machine has:");
-                    System.out.println(amountWater + " of water");
-                    System.out.println(amountMilk + " of milk");
-                    System.out.println(amountCoffee + " of coffee beans");
-                    System.out.println(amountCups + " of disposable cups");
-                    System.out.println(amountMoney + " of money");
-                    System.out.println();
-                    System.out.println( "Write action (buy, fill, take):");
-                break;
-       }
-       
+                case "remaining":
+                
+                            System.out.println();
+                            System.out.println("The coffee machine has:");
+                            System.out.println(amountWater + " of water");
+                            System.out.println(amountMilk + " of milk");
+                            System.out.println(amountCoffee + " of coffee beans");
+                            System.out.println(amountCups + " of disposable cups");
+                            System.out.println(amountMoney + " of money");
+                            System.out.println();
+                        
+                        break;
+            }
+        }
+    
    
                
     }
